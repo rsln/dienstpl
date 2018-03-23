@@ -1,0 +1,83 @@
+<div class="row" id="row">
+  <div class="col-xs-12">
+    <form [formGroup]="kundeForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="firma">Firma</label>
+            <input type="text" id="firma" class="form-control" formControlName="firma" placeholder="Firma GmbH">
+            <div *ngIf="kundeForm.controls['firma'].hasError('required') && kundeForm.controls['firma'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="ansprechspartner">Ansprechspartner</label>
+            <input type="text" id="ansprechspartner" class="form-control" formControlName="ansprechspartner" placeholder="Vorname Name" >
+            <div *ngIf="kundeForm.controls['ansprechspartner'].hasError('required') && kundeForm.controls['ansprechspartner'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="tel">Telefon</label>
+            <input type="text" id="tel" class="form-control" formControlName="tel" placeholder="030 3948432">
+            <div *ngIf="kundeForm.controls['tel'].hasError('required') && kundeForm.controls['tel'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>           
+            <div *ngIf="kundeForm.controls['tel'].hasError('minlength') && kundeForm.controls['tel'].touched" class="alert alert-danger">Der Telefonnummer muss mindestens 10 Zeichen lang sein!</div>
+            <div *ngIf="kundeForm.controls['tel'].hasError('maxlength') && kundeForm.controls['tel'].touched" class="alert alert-danger">Der Telefonnummer ist zu lang!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="name@example.com">
+            <div *ngIf="kundeForm.controls['email'].hasError('required') && kundeForm.controls['email'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+            <div *ngIf="kundeForm.controls['email'].hasError('pattern') && kundeForm.controls['email'].touched" class="alert alert-danger">Bitte überprüfen Sie die Email-Adresse!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="adress">Strasse</label>
+            <input type="text" id="adress" class="form-control" formControlName="adress" placeholder="Strasse Nr.">
+            <div *ngIf="kundeForm.controls['adress'].hasError('required') && kundeForm.controls['adress'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="plz">PLZ</label>
+            <input type="text" id="plz" class="form-control" formControlName="plz" placeholder="12345">
+            <div *ngIf="kundeForm.controls['plz'].hasError('required') && kundeForm.controls['plz'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+            <div *ngIf="kundeForm.controls['plz'].hasError('minlength') && kundeForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl muss mindestens fünf Ziffern enthalten!</div>
+            <div *ngIf="kundeForm.controls['plz'].hasError('maxlength') && kundeForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl darf maximal 5 Ziffern enthalten!</div>
+            <div *ngIf="kundeForm.controls['plz'].hasError('pattern') && kundeForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl muss Ziffern bestehen!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="city">Stadt</label>
+            <input type="text" id="city" class="form-control" formControlName="city" placeholder="Berlin">
+            <div *ngIf="kundeForm.controls['city'].hasError('required') && kundeForm.controls['city'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!kundeForm.valid">Speichern</button>
+          <a class="btn btn-danger" (click)="onCancel()">Abbrechen</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

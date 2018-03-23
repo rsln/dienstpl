@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12, button" >
+    <a class="btn btn-success" (click)="onNewKunde()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true" > </span>
+      Kunde erstellen
+      </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-kunde-item *ngFor="let kunde of kunden" [kunde]="kunde" [kundeId]="kunde._id" ></app-kunde-item>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+
+<div class="row" id="row">
+  <div class="col-xs-12">
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Vorname Name">
+            <div *ngIf="personForm.controls['name'].hasError('required') && personForm.controls['name'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="tel">Tel.</label>
+            <input type="text" id="tel" class="form-control" formControlName="tel" placeholder="030 2345676">
+            <div *ngIf="personForm.controls['tel'].hasError('required') && personForm.controls['tel'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+            <div *ngIf="personForm.controls['tel'].hasError('minlength') && personForm.controls['tel'].touched" class="alert alert-danger">Der Telefonnummer muss mindestens 10 Zeichen lang sein!</div>
+            <div *ngIf="personForm.controls['tel'].hasError('maxlength') && personForm.controls['tel'].touched" class="alert alert-danger">Der Telefonnummer ist zu lang!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="name@example.com">
+            <div *ngIf="personForm.controls['email'].hasError('required') && personForm.controls['email'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+            <div *ngIf="personForm.controls['email'].hasError('pattern') && personForm.controls['email'].touched" class="alert alert-danger">Bitte überprüfen Sie die Email-Adresse!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="adress">Strasse</label>
+            <input type="text" id="adress" class="form-control" formControlName="adress" placeholder="Hauptstrasse 1">
+            <div *ngIf="personForm.controls['adress'].hasError('required') && personForm.controls['adress'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="plz">PLZ</label>
+            <input type="text" id="plz" class="form-control" formControlName="plz" placeholder="12345">
+            <div *ngIf="personForm.controls['plz'].hasError('required') && personForm.controls['plz'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+            <div *ngIf="personForm.controls['plz'].hasError('minlength') && personForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl muss mindestens fünf Ziffern enthalten!</div>
+            <div *ngIf="personForm.controls['plz'].hasError('maxlength') && personForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl darf maximal 5 Ziffern enthalten!</div>
+            <div *ngIf="personForm.controls['plz'].hasError('pattern') && personForm.controls['plz'].touched" class="alert alert-danger">Die Postleitzahl muss aus Ziffern bestehen!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="city">Stadt</label>
+            <input type="text" id="city" class="form-control" formControlName="city" placeholder="Berlin">
+            <div *ngIf="personForm.controls['city'].hasError('required') && personForm.controls['city'].touched" class="alert alert-danger">Dieses Feld darf nicht leer sein!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="hours">Max. Arbeitsstunden pro Monat</label>
+            <input type="text" id="hours" class="form-control" formControlName="hours" placeholder="190">
+            <div *ngIf="personForm.controls['hours'].hasError('pattern') && personForm.controls['hours'].touched" class="alert alert-danger">Das Feld darf nur Ziffern enthalten!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="image-url">Image Url</label>
+            <input type="file" accept="image/*" (change)="getFileAsBase64($event)" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div *ngIf="base64Encoded">
+            <div class="img">
+              <img [src]="base64Encoded">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!personForm.valid">Speichern</button>
+          <a class="btn btn-danger" (click)="onCancel()">Abbrechen</a>
+        </div>
+      </div>
+      <div>
+
+
+      </div>
+    </form>
+  </div>
+</div>

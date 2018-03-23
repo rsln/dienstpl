@@ -1,0 +1,72 @@
+.day {
+  font-weight: bold;
+  font-size: 60%;
+}
+
+
+select.form-control {
+  font-size: 100%;
+  width: auto;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#personName {
+  vertical-align: middle;
+}
+
+.table-responsive {
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#monat {
+  vertical-align: middle;
+}
+
+a {
+    float: right;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    
+ 
+    
+}
+
+label{
+  float: right;
+  
+}
+.checkbox{
+  float: right;
+}
+
+h3{
+    margin: auto;
+}
+
+.schicht{
+    font-size: smaller;
+    font-weight: bold;   
+    color: black;
+}
+
+
+
+.table{
+  border: 0px;
+}
+
+select:disabled {
+    background: #DFF0D8;
+}
+
+

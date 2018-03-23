@@ -1,0 +1,25 @@
+
+<div class="row" >
+  <div class="col-xs-12" >
+    <h1 class="name">{{selectedKunde?.firma}}</h1>
+  </div>
+
+   <div class="col-xs-12" >
+    <h3 class="name">{{selectedKunde?.ansprechspartner}}</h3>
+  </div>
+
+
+  <div class="col-xs-8" id="adress">
+    <p> Tel.: {{selectedKunde?.tel}} <br> E-Mail: {{selectedKunde?.email}} </p>
+    <br>
+    <p>{{selectedKunde?.adress}} <br>{{selectedKunde?.plz}} {{selectedKunde?.city}}</p>
+
+
+  </div>
+
+  <div class="col-xs-12 " id="button">
+    <br>
+    <button class="btn btn-primary" (click)="onEdit()">Bearbeiten</button>
+    <button class="btn btn-danger" (click)="onDelete()">Löschen</button>
+  </div>
+</div>

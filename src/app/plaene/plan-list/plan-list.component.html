@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12, button">
+    <a class="btn btn-success" [routerLink]="['new']" (click)="onNewPlan()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span> Dienstplan erstellen
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <app-plan-item *ngFor="let plan of plaene" [plan]="plan" [planId]="plan._id" [plaene]="plaene"></app-plan-item>
+    </ul>
+  </div>
+</div>

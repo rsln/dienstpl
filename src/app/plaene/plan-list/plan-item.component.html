@@ -1,0 +1,62 @@
+<div class="row" id="plan">
+  <!--<form [formGroup]="planItemForm" (ngSubmit)="onSubmit()">-->
+  <div class="panel panel-success">
+    <!-- Standard-Panel-Inhalt -->
+    <div class="panel-heading md-col-12">
+      <div class="activate md-col-6">
+        <label for="chexbox"> Aktivieren um ins Bearbeitungmodus zu wechseln: &nbsp;  
+                    <input type="checkbox"  class="checkbox" [(ngModel)]="butDisabled"  (change)="($event)" (click)="save()"/>
+                </label>
+      </div>
+
+      <div class=" md-col-6">
+        <h3>{{plan.kunde.firma}}</h3>
+      </div>
+      <div *ngIf="butDisabled">
+        <a class="btn btn-primary " (click)="onEdit()">Bearbeiten</a>
+      </div>
+      <br>
+      <div class="schicht">
+        <p *ngFor="let schicht of plan.schichten">Schicht {{schicht.name}}: {{schicht.startHrs}}:{{schicht.startMins}} bis {{schicht.endHrs}}:{{schicht.endMins}} <br></p>
+      </div>
+
+    </div>
+    <!-- Tabelle -->
+    <div class="table-responsive">
+      <table class=" table table-striped ">
+        <thead>
+          <tr class="success">
+            <th id="monat" ng-value="plan.month">{{planDate| date: 'MMMM'}}<br/>{{planDate| date: 'y'}}</th>
+            <td *ngFor="let day of dayRange">
+              {{day| date: 'dd'}}<br>
+              <p class="day">
+                {{day| date: 'E'}}
+              </p>
+            </td>
+          </tr>
+        </thead>
+        <tbody class="table table-hover">
+          <tr *ngFor="let arbeitszeit of plan.arbeitszeiten; let i = index">
+            <th id="personen">{{ arbeitszeit.person.name}}</th>
+            <td *ngFor="let arbeitstag of arbeitszeit.arbeitstage; let j = index">
+              <select class="form-control" [disabled]="!butDisabled" [(ngModel)]="plan.arbeitszeiten[i].arbeitstage[j].schicht" (ngModelChange)="onChange($event,i,j)"
+                data-toggle="tooltip" data-placement="top" title="Bitte Checkbox aktivieren um Schichten auszuwählen!">
+                                <option></option>
+                                <option *ngFor="let schicht of plan.schichten" [ngValue]="schicht">{{schicht.name}}</option>
+                            </select>
+              <div class="alert alert-danger" *ngIf="arbeitstag._valid_time">
+                Maximale Arbeitszeit überschritten!
+              </div>
+              <div class="alert alert-danger" *ngIf="arbeitstag._valid_schicht">
+                Diese schicht überschmeidet sich mit einer anderen Schicht!
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  <!--</form>-->
+</div>
+<br>

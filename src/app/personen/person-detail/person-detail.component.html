@@ -1,0 +1,22 @@
+<div class="row" >
+  <div class="col-xs-8" >
+    <h1 class="name">{{selectedPerson?.firstname}} {{selectedPerson?.name}}</h1>
+  </div>
+    <div class="col-xs-4" id="image">
+      <img src="{{selectedPerson?.imagePath}}" alt="" class="img-responsive">
+    </div>
+  <div class="col-xs-8" id="adress">
+    <p> Tel.: {{selectedPerson?.tel}} <br> E-Mail: {{selectedPerson?.email}} </p>
+    <hr>
+    <p>{{selectedPerson?.adress}} <br>{{selectedPerson?.plz}} {{selectedPerson?.city}}</p>
+    <br>
+    <p>Maximale Arbeitszeit pro Monat: {{selectedPerson?.hours}}std.</p>
+
+  </div>
+
+  <div class="col-xs-12 " id="button">
+    <br>
+    <button class="btn btn-primary" (click)="onEdit()">Bearbeiten</button>
+    <button class="btn btn-danger" (click)="onDelete()">Löschen</button>
+  </div>
+</div>

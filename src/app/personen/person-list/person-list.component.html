@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12, button" >
+    <a class="btn btn-success" (click)="onNewPerson()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true" > </span>
+      Person erstellen
+      </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-person-item *ngFor="let person of personen" [person]="person" [personId]="person._id" ></app-person-item>
+    </ul>
+  </div>
+</div>

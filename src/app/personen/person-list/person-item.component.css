@@ -1,0 +1,16 @@
+a {
+  border: 0px solid grey;
+  position: relative;
+-webkit-box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+-moz-box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+}
+.row {
+  margin-top: 20px;
+}
+
+a.list-group-item.clearfix.active{
+  background-color: #3A8A7D;
+    border-color: #3A8A7D;
+
+}

@@ -1,0 +1,179 @@
+<div class="row" id="row">
+    <div class="col-xs-12">
+        <form [formGroup]="planForm" (ngSubmit)="onSubmit()">
+
+            <!--<div class="form-group">-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+
+
+                        <label for="kunden" class="col-md-12">Bitte wählen Sie einen Ort aus:</label>
+                        <div class="col-xs-4">
+
+
+                            <select  class="form-control" formControlName="firma" >
+                                <option *ngFor="let kunde of kunden" [value]="kunde._id" > 
+                                    <!--[selected]="plan.kunde._id == kunde._id"-->
+                                    {{kunde.firma}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <br>
+
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <label for="month" class="col-md-12">Bitte wählen Sie das Monat und Jahr aus: </label>
+                    <div class="col-xs-2">
+
+                        <select class="form-control" formControlName="month">
+                            <option  *ngFor="let month of months" [value]="month.val">{{month.name}}</option>    
+                        </select>
+                    </div>
+                    <div class="col-xs-2">
+                        <select class="form-control" formControlName="year">
+                            <option  *ngFor="let y of years"  [value]="y">{{y}}</option>    
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <div class="row" >
+            <div class="form-group">
+                <div class="col-xs-11">
+                    <label for="personen" class="col-xs-12">Bitte wählen Sie einen Mitarbeiter aus: </label>
+                    <div class="col-xs-5">
+                        <select multiple class="form-control">
+                            <option *ngFor="let person of availablePersonen" [value]="person._id" (click)="onAddPersonControl(person._id)"> 
+                                {{person.name}}
+                        </option> 
+                    </select>
+                </div>
+                <ul class="list-group" formArrayName="personen">
+                    <div *ngFor="let person of planForm.get('personen').controls; let i = index">
+                        <div formGroupName="{{ i }}">
+                            <div class="col-xs-4">
+
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                            <div class="col-xs-2">
+                                <button class="btn btn-danger" (click)="onRemovePersonControl(i)">X</button>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <ul class="list-group" formArrayName="schichten">
+
+
+                <div class="col-md-8">
+                    <label for="Schichten">Bitte tragen Sie die Schichten ein: </label>
+                    <br> 
+                    <div class="row" *ngFor="let schicht of planForm.get('schichten').controls; let i = index">
+                         <small *ngIf="!planForm.controls.schichten.controls[i].controls.startHrs.valid" 
+                            class="text-danger">
+                            Startzeit (Stunden) hat ein falsches Format!
+                        </small>
+                        <small *ngIf="!planForm.controls.schichten.controls[i].controls.startMins.valid" 
+                            class="text-danger">
+                            Startzeit (Minuten) hat ein falsches Format!
+                        </small>
+                        <small *ngIf="!planForm.controls.schichten.controls[i].controls.endHrs.valid" 
+                            class="text-danger">
+                            Endzeit (Stunden) hat ein falsches Format!
+                        </small>
+                        <small *ngIf="!planForm.controls.schichten.controls[i].controls.endMins.valid" 
+                            class="text-danger">
+                            Endzeit (Minuten) hat ein falsches Format!
+                        </small>
+                        <div formGroupName="{{ i }}">
+                            <div class="col-md-2">
+                                <p>Schicht-Nr.:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" formControlName="name" placeholder=" Nr.">
+                            </div>
+                            <div class="col-md-1">
+                                <p>von:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" formControlName="startHrs" placeholder="Std.">
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" formControlName="startMins" placeholder="Min.">
+                            </div>
+                            <div class="col-md-1">
+                                <p>bis:</p>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" formControlName="endHrs" placeholder="Std.">
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" formControlName="endMins" placeholder="Min.">
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-danger" (click)="onRemoveSchichtControl(i)">X</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <div class="col-md-8">
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <p>Schicht-Nr.:</p>
+                    </div>
+                    <div class="col-md-1"><input type="text" class="form-control" placeholder="Nr." #itemName></div>
+                    <div class="col-md-1">
+                        <p>von:</p>
+                    </div>
+                    <div class="col-md-1"><input type="text" class="form-control" placeholder="Std." #itemStartHrs></div>
+                    <div class="col-md-1"><input type="text" class="form-control" placeholder="Min." #itemStartMins></div>
+                    <div class="col-md-1">
+                        <p>bis:</p>
+                    </div>
+                    <div class="col-md-1"><input type="text" class="form-control" placeholder="Std." #itemEndHrs></div>
+                    <div class="col-md-1"><input type="text" class="form-control" placeholder="Min." #itemEndMins></div>
+
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary"
+                            (click)="onAddSchichtControl(itemName.value, itemStartHrs.value, itemStartMins.value, 
+                                itemEndHrs.value, itemEndMins.value)">+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="col-xs-10">
+        <button type="submit" class="btn btn-success" [disabled]="!planForm.valid">Speichern</button>
+        <a class="btn btn-danger" (click)="onCancel()">Abbrechen</a>
+    </div>
+
+</div>
+<br>
+</form>
+</div>
+</div>

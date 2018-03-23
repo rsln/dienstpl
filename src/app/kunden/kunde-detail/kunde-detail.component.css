@@ -1,0 +1,31 @@
+
+
+.name {
+  margin: auto;
+  margin-bottom: 15px;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.row {
+  background-color: white;
+  margin-left: 5px;
+  margin-top: 30px;
+  border: 0px solid lightgrey;
+  border-radius: 5px;
+-webkit-box-shadow: 4px 2px 5px 0px rgba(184,184,184,0.44);
+-moz-box-shadow: 4px 2px 5px 0px rgba(184,184,184,0.44);
+box-shadow: 4px 2px 5px 0px rgba(184,184,184,0.44);
+}
+#button {
+  margin-bottom: 10px;
+  border-radius: 3px;
+ 
+
+    
+}
+  
+
+.btn-danger {
+  margin-left: 25px;
+}

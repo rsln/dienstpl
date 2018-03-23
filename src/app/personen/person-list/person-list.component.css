@@ -1,0 +1,13 @@
+.button{
+    float: right;
+    
+    margin-bottom: 5px;
+    margin-top: 30px;
+    border-radius: 3px;
+    
+    -webkit-box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+-moz-box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+box-shadow: 3px 1px 5px 0px rgba(184,184,184,0.4);
+
+    
+}

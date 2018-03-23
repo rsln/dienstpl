@@ -1,0 +1,16 @@
+
+<div class="row">
+  <div class="col-xs-12, item" >
+<a [routerLink]="[personId]" class="list-group-item clearfix" routerLinkActive="active">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading"> {{person.name}}</h4>
+    <p class="list-group-item-text">Tel: {{person.tel}} </p>
+  </div>
+  <span class="pull-right">
+      <img class="img-responsive"
+           src="{{person.imagePath}}"
+           style="max-height: 50px;"/>
+  </span>
+</a>
+  </div>
+</div>
